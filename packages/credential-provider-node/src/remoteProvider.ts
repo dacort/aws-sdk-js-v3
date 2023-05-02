@@ -15,7 +15,7 @@ export const remoteProvider = (init: RemoteProviderInit): AwsCredentialIdentityP
     return fromContainerMetadata(init);
   }
 
-  if (process.env[ENV_IMDS_DISABLED]) {
+  if (process.env[ENV_IMDS_DISABLED] === 'true') {
     return async () => {
       throw new CredentialsProviderError("EC2 Instance Metadata Service access disabled");
     };
